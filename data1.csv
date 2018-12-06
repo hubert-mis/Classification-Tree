@@ -1,4 +1,4 @@
-age_under 28,age_between 28 and 45,age_beyond 45,education_elementary,education_high,education_graduate,dwelling place_village,dwelling place_town,dwelling place_city,labour_unemployed,labour_small company,labour_huge company,labour_self-employment,gender_female,gender_male,autoritarian-right,autoritarian-left,libertarian-right,libertarian-left
+Age: Under 28,Age: Between 28 and 45,Age: Beyond 45,Education: Elementary,Education: High,Education: Graduate,Dwelling place: Village,Dwelling place: Town,Dwelling place: City,Labour: Unemployed,Labour: Small company,Labour: Huge company,Labour: Self-employment,Gender: Female,Gender: Male,Autoritarian-right,Autoritarian-left,Libertarian-right,Libertarian-left
 1,0,0,1,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0
 0,1,0,1,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0
 0,0,1,1,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0
