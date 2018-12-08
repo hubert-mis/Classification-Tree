@@ -1,4 +1,5 @@
 library(tidyverse)
+library(data.tree)
 
 entropy <- function(x){
   sapply(x/sum(x), function(x){
@@ -11,15 +12,19 @@ entropy_cond <- function(x, rows){
   mean(rows) * entropy(colSums(x[rows, ]))
 }
 
-binary_tree <- function(independent, dependent){
+binary_tree <- function(independent, dependent, node, conditionResult = NULL){
   if(nrow(independent) != nrow(dependent)){
     stop("Datasets have different number of observations!", call. = F)
   } else observations <- nrow(independent)
   ### wypadaloby potestowac na wypadek zlych danych wejsciowych
-
+  
+  #dodawanie galezi przedstawiajacej spelnienie lub niespelnienie poprzedniego warunku
+  child <- node$AddChild(conditionResult)
+  
   ### jezeli wszystkie obserwacje naleza do tego samego
   categories = colSums(dependent)
   if(max(categories) == observations){
+    child$AddChild(colnames(dependent)[which.max(categories)])
     return(list(decision = T,
                 answer = colnames(dependent)[which.max(categories)]))
   }
@@ -41,10 +46,15 @@ binary_tree <- function(independent, dependent){
   # obserwacje spelniajace wybrany warunek
   rows = independent[cond] == 1
   
+  #dodanie galezi z warunkiem
+  nextChild <- child$AddChild(colnames(independent)[cond])
+  
   # zwracam wybrany warunek, przy czym rekurencyjnie wywoluje funkcje
   # dla podzielonych podzbiorow
   return(list(decision = F,
               condition = colnames(independent)[cond],
-              yes = binary_tree(independent[rows, ], dependent[rows, ]),
-              no = binary_tree(independent[!rows, ], dependent[!rows, ])))
+              yes = binary_tree(independent[rows, ], dependent[rows, ], nextChild, "Yes"),
+              no = binary_tree(independent[!rows, ], dependent[!rows, ], nextChild, "No")))
 }
+
+

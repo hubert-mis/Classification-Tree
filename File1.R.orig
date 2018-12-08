@@ -56,6 +56,4 @@ resultData <- cbind(data, computePreferencesMatrix(data))
 colnames(resultData)[(ncol(resultData) - length(parties)+1):ncol(resultData)] <- parties
 resultData <- resultData[complete.cases(resultData),]
 
-write.csv(resultData, "realData.csv")
-
 sum(resultData$`libertarian-right`)
