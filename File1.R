@@ -58,4 +58,3 @@ resultData <- resultData[complete.cases(resultData),]
 
 write.csv(resultData, "realData.csv")
 
-sum(resultData$`libertarian-right`)

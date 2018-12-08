@@ -1,5 +1,6 @@
 source("code.R")
 library("tidyverse")
+library("rattle")
 
 nodeTestData <- Node$new("Media")
 nodeData1 <- Node$new("Kompas Polityczny")
@@ -13,12 +14,20 @@ data1 = read_csv("data1.csv")
 a2 = binary_tree(data1[, 1:15], data1[16:19], nodeRealData, "Start")
 print(nodeRealData)
 
+
 realData <- read.csv("realData.csv")
 realData <- realData[,-1]
 a3 <- binary_tree(realData[,1:15], realData[,16:19], node, "Start")
-print(node)
+
+printableResult <- as.data.frame(node)
+lol <- FrameTree
+print(a3)
 
 SetEdgeStyle(nodeTestData, arrowhead = "vee", penwidth = 4)
 SetNodeStyle(nodeTestData, style = "filled,rounded", shape = "box", fillcolor = "#FFAEAA", fontname = "helvetica", fontcolor = "black", fontsize = 16)
 
 plot(nodeTestData)
+getRpartModel(nodeTestData)
+
+sink("result.txt")
+print(printableResult)
