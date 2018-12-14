@@ -14,11 +14,10 @@ listResult <- binary_tree(realData[,1:15], realData[,16:19], nodeRealData, "Star
 printableResult <- as.data.frame(nodeRealData)
 print(listResult)
 
-SetEdgeStyle(nodeTestData, arrowhead = "vee", penwidth = 4)
-SetNodeStyle(nodeTestData, style = "filled,rounded", shape = "box", fillcolor = "#FFAEAA", fontname = "helvetica", fontcolor = "black", fontsize = 16)
+SetEdgeStyle(nodeRealData, arrowhead = "vee", penwidth = 4)
+SetNodeStyle(nodeRealData, style = "filled,rounded", shape = "box", fillcolor = "#FFAEAA", fontname = "helvetica", fontcolor = "black", fontsize = 16)
 
 plot(nodeRealData)
-getRpartModel(nodeRealData)
 
 sink("result.txt")
 print(printableResult)
