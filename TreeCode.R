@@ -16,7 +16,6 @@ binary_tree <- function(independent, dependent, node, conditionResult = NULL){
   if(nrow(independent) != nrow(dependent)){
     stop("Datasets have different number of observations!", call. = F)
   } else observations <- nrow(independent)
-  ### wypadaloby potestowac na wypadek zlych danych wejsciowych
   
   #dodawanie galezi przedstawiajacej spelnienie lub niespelnienie poprzedniego warunku
   child <- node$AddChild(conditionResult)

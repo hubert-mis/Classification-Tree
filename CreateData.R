@@ -9,9 +9,7 @@ list(
   gender = c("female", "male")) %>%
   
   expand.grid() %>% dummy_cols() %>% select(-(1:5)) -> data
-#parties = c("autoritarian-right", "autoritarian-left", "libertarian-right", "libertarian-left")
-#data[, parties[1]] <- 1; data[, parties[-1]] <- 0
-#write_csv(data, "data.csv")
+
 
 #initalizing wages vectors
 age_wages <- list("under 28" = c(-1, -2), "between 28 and 45" = c(1,0), "beyond 45" = c(2,2))
