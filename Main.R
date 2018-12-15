@@ -1,9 +1,15 @@
+#install.packages("DiagrammeRsvg", 'rsvg', )
+
 source("TreeCode.R")
 library("tidyverse")
 library(rpart)
 library(rattle)
 library(rpart.plot)
 library(RColorBrewer)
+library(DiagrammeRsvg)
+library(DiagrammeR)
+library(data.tree)
+
 
 nodeRealData <- Node$new("Kompas Polityczny")
 
@@ -17,9 +23,10 @@ print(listResult)
 SetEdgeStyle(nodeRealData, arrowhead = "vee", penwidth = 4)
 SetNodeStyle(nodeRealData, style = "filled,rounded", shape = "box", fillcolor = "#FFAEAA", fontname = "helvetica", fontcolor = "black", fontsize = 16)
 
-plot(nodeRealData)
 
-sink("result.txt")
+#plot(nodeRealData)
+export_graph(ToDiagrammeRGraph(nodeRealData), "outputTree.pdf")
+
+
+sink("outputTree.txt")
 print(printableResult)
-
-
